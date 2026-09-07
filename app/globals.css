@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Permanent+Marker&display=swap');
+@import "tailwindcss";
+
+@font-face {
+  font-family: "MyFont";
+  src: url("/fonts/CabinSketch-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MyFont";
+  src: url("/fonts/CabinSketch-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  --color-ink: #0b0c0b;
+  --color-board: #10110f;
+  --color-panel: #151613;
+  --color-chalk: #f3efe2;
+  --color-chalk-dim: rgb(243 239 226 / 0.62);
+  --color-chalk-faint: rgb(243 239 226 / 0.38);
+  --color-mustard: #d5b24e;
+  --color-mustard-soft: rgb(224 173 26 / 0.58);
+  --color-line: rgb(243 239 226 / 0.22);
+  --color-line-strong: rgb(243 239 226 / 0.42);
+  --font-sans: "MyFont", Arial, sans-serif;
+  --font-mono: "DM Mono", monospace;
+  --font-chalk: "Caveat", cursive;
+  --font-marker: "Permanent Marker", cursive;
+  --font-head: "MyFont", "Permanent Marker", cursive;
+ 
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+
+  }
+
+  html {
+    min-width: 320px;
+    scroll-behavior: smooth;
+    background: var(--color-ink);
+  }
+
+  body {
+    min-width: 320px;
+    margin: 0;
+    background: var(--color-ink);
+    color: var(--color-chalk);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-mustard);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-mustard);
+    outline-offset: 4px;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+:root {
+  --border-image: url("/chalk.jpg") 30 round;
+  --border-imageyellow: url("/chalkyellow.jpg") 30 round;
+
+}
+.borderbgimageyellow{
+  border: 3px solid transparent;
+   border-image: var(--border-imageyellow);
+}
+.borderbgimage{
+  border: 3px solid transparent;
+   border-image: var(--border-image);
+}
+.borderbgimagetop{
+  border-top: 3px solid transparent;
+   border-image: var(--border-image);
+}
+.borderbgimagebottom{
+  border-bottom: 3px solid transparent;
+   border-image: var(--border-image);
+}
+.borderbgimageleft{
+  border-left: 3px solid transparent;
+   border-image: var(--border-image);
+}
+@layer components {
+  .chalkboard {
+    background-color: var(--color-ink);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+    background-blend-mode: soft-light;
+  }
+
+  .site-rail {
+    width: min(calc(100% - 2rem), 1240px);
+    margin-inline: auto;
+  }
+
+  .paper-grain {
+    background-color: var(--color-board);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.68' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+    background-blend-mode: soft-light;
+  }
+
+  .hatch {
+    background-color: var(--color-panel);
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-3 15L15 -3M3 21L21 3' stroke='%23f3efe2' stroke-opacity='.08' stroke-width='1'/%3E%3C/svg%3E");
+  }
+
+  .chalk-frame {
+    border: 1px solid var(--color-line);
+    background-color: rgb(16 17 15 / 0.72);
+  }
+
+  .rough-rule {
+    border-top: 1px dashed var(--color-line);
+  }
+
+  .hand-underline {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .hand-underline::after {
+    position: absolute;
+    right: -0.1rem;
+    bottom: -0.45rem;
+    left: -0.1rem;
+    height: 2px;
+    background: var(--color-mustard);
+    content: "";
+    transform: rotate(-1.5deg);
+  }
+
+  .reveal {
+    animation: rise-in 700ms ease-out both;
+  }
+
+  .char-reveal {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(18px) rotate(2deg);
+    transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform, opacity;
+  }
+
+  .char-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+
+  .input-line {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid var(--color-line-strong);
+    border-radius: 0;
+    background: transparent;
+    padding: 0.85rem 0;
+    color: var(--color-chalk);
+    transition: border-color 180ms ease, color 180ms ease;
+  }
+
+  .input-line::placeholder {
+    color: white/80;
+    font-family: var(--font-mono);
+    font-size: 16px;
+  }
+
+  .input-line:hover {
+    border-color: var(--color-chalk-dim);
+  }
+
+  .input-line:focus {
+    border-color: var(--color-mustard);
+    outline: none;
+  }
+
+  @media (min-width: 640px) {
+    .site-rail {
+      width: min(calc(100% - 4rem), 1240px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .reveal {
+      animation: none;
+    }
+
+    .char-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logo-marquee-forward {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes logo-marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.logo-marquee-forward,
+.logo-marquee-reverse {
+  animation-name: logo-marquee-forward;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.logo-marquee-reverse {
+  animation-name: logo-marquee-reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-forward,
+  .logo-marquee-reverse {
+    animation-play-state: paused;
+  }
+}

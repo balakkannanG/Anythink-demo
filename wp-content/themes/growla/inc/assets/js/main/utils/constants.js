@@ -1,1 +1,0 @@
-export const ELASTIC_EASING = 'elastic.out(1,1)';

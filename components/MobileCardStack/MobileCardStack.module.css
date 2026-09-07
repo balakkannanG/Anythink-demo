@@ -1,0 +1,51 @@
+/* ============================================
+   MOBILE CARD STACK ANIMATION
+   Animation-only CSS
+   
+   This component handles ONLY the animation structure.
+   Content, styling, colors, and typography are 
+   provided by the parent/user.
+   ============================================ */
+
+/* Minimum mobile breakpoint */
+@media (max-width: 767px) {
+  .mobile-card-stack-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .mobile-card-stack-container {
+    position: relative;
+    width: 100%;
+  }
+
+  /* Card stack viewport */
+  .mobile-card-stack-cards {
+    position: relative;
+    width: 100%;
+    height: 100svh;
+  }
+
+  /* Individual card animation element */
+  .mobile-card-stack-item {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    transform: translateX(-50%);
+    transform-origin: center center;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+}
+
+/* Desktop: animation disabled */
+@media (min-width: 768px) {
+  .mobile-card-stack-item {
+    position: static;
+    transform: none;
+  }
+}
