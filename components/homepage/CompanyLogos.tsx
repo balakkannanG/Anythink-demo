@@ -5,10 +5,10 @@ import { useState } from "react";
 import Image from "next/image";
 
 const logoRows = [
-  ["/company/Asset 1.png", "/company/Asset 2.png", "/company/Asset 3.png", "/company/Asset 4.png", "/company/Asset 5.png"],
-  [ "/company/Asset 6.png","/company/Asset 7.png", "/company/Asset 8.png", "/company/Asset 9.png", "/company/Asset 10.png"],
-  [ "/company/Asset 11.png", "/company/Asset 12.png","/company/Asset 13.png", "/company/Asset 14.png", "/company/Asset 15.png"],
-  ["/company/Asset 16.png", "/company/Asset 17.png", "/company/Asset 18.png","/company/Asset 19.png", "/company/Asset 20.png", "/company/Asset 21.png"],
+  ["/Company/Asset 1.png", "/Company/Asset 2.png", "/Company/Asset 3.png", "/Company/Asset 4.png", "/Company/Asset 5.png"],
+  ["/Company/Asset 6.png", "/Company/Asset 7.png", "/Company/Asset 8.png", "/Company/Asset 9.png", "/Company/Asset 10.png"],
+  ["/Company/Asset 11.png", "/Company/Asset 12.png", "/Company/Asset 13.png", "/Company/Asset 14.png", "/Company/Asset 15.png"],
+  ["/Company/Asset 16.png", "/Company/Asset 17.png", "/Company/Asset 18.png", "/Company/Asset 19.png", "/Company/Asset 20.png", "/Company/Asset 21.png"],
 ] as const;
 
 function LogoRow({ logos, rowIndex }: { logos: readonly string[]; rowIndex: number }) {
