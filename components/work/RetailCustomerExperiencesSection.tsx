@@ -82,13 +82,14 @@ export function RetailCustomerExperiencesSection() {
           {experiences.map((experience, index) => (
             <motion.article
               key={experience.title}
-              className={`group px-4 py-5 sm:px-6 lg:px-5 ${index > 0 ? "border-dashed border-line sm:border-l" : ""}`}
+              className={`group px-4 py-5 sm:px-6 lg:px-5 max-md:border-none! ${index > 0 ? " borderbgimageleft  sm:border-l" : ""}`}
               initial={{ opacity: 0, y: 16 }}
+
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="relative rotate-1 border-4 border-chalk bg-board p-1 shadow-[0_0_0_1px_rgb(243_239_226/0.2)] transition-transform duration-300 group-hover:rotate-0 group-hover:scale-[1.02]">
+              <div className="relative rotate-1 border-4 borderbgimage bg-board p-1 shadow-[0_0_0_1px_rgb(243_239_226/0.2)] transition-transform duration-300 group-hover:rotate-0 group-hover:scale-[1.02]">
                 <span className="absolute -top-4 left-1/2 z-10 h-8 w-16 -translate-x-1/2 -rotate-2 bg-mustard/70" aria-hidden="true" />
                 <div className="relative aspect-square overflow-hidden">
                   <Image
@@ -100,13 +101,21 @@ export function RetailCustomerExperiencesSection() {
                   />
                 </div>
               </div>
-              <div className="mt-7 text-center flex flex-col items-center justify-center gap-2">
-                  <img src={experience.icon} alt="Experience" className="mt-1 shrink-0 w-38  object-contain h-30" />
-                <div className="flex items-start justify-center gap-2 text-mustard">
-                  <MapPin className="mt-0.5 shrink-0" size={25} strokeWidth={1.4} aria-hidden="true" />
-                  <h3 className="max-w-40 h-20 font-chalk text-2xl uppercase leading-[0.9] sm:text-[1.55rem]">{experience.title}</h3>
+              <div className="mt-6 flex items-start justify-center gap-3 text-center">
+                <img
+                  src={experience.icon}
+                  alt={experience.title}
+                  className="mt-1 h-auto w-26 shrink-0 object-contain"
+                  aria-hidden="true"
+                />
+                <div>
+                  <h3 className="font-chalk text-2xl uppercase leading-[0.9] text-mustard sm:text-[1.55rem]">
+                    {experience.title}
+                  </h3>
+                  <p className="mt-3 font-mono text-xl text-white/80">
+                    <span className="font-chalk text-sky-300">{experience.city}</span>
+                  </p>
                 </div>
-                <p className="mt-5 font-mono text-sm uppercase text-white/80">{experience.city}</p>
               </div>
             </motion.article>
           ))}

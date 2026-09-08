@@ -23,10 +23,10 @@ export function AboutHero() {
           <Image
             src="/homepage/anythinkmedialogo.svg"
             alt="Anythink Media and Events"
-            width={397}
-            height={144}
+            width={400}
+            height={100}
             priority
-            className="h-auto w-44 sm:w-56"
+            className=" w-full lg:w-100 sm:w-50 md:w-full"
           />
         </motion.div>
 

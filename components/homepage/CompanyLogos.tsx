@@ -95,7 +95,7 @@ export function CompanyLogos() {
           </motion.div>
       
           <motion.p
-            className="max-w-md font-chalk text-2xl leading-tight text-white/80 "
+            className="max-w-md font-chalk text-2xl leading-tight max-md:text-center text-white/80 "
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}

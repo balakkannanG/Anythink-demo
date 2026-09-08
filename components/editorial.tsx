@@ -62,9 +62,9 @@ export function ActionLink({
   className = "",
 }: ActionLinkProps) {
   const variantClasses = {
-    solid: "borderbgimageyellow bg-mustard text-ink hover:bg-transparent hover:text-mustard",
-    outline: "border border-line-strong text-chalk hover:border-mustard hover:text-mustard",
-    plain: "border-b border-mustard text-mustard hover:text-chalk",
+    solid: "border border-mustard/70 borderbgimageyellow text-mustard hover:bg-mustard hover:text-ink",
+    outline: "border border-mustard/70 borderbgimageyellow text-mustard hover:bg-mustard hover:text-ink",
+    plain: "border border-mustard/70 borderbgimageyellow text-mustard hover:bg-mustard hover:text-ink",
   };
 
   return (

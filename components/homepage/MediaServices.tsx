@@ -53,7 +53,7 @@ export function MediaServices() {
             alt="anyTHINK Media and Events"
             width={220}
             height={95}
-            className="h-auto w-52"
+            className=" w-full max-md:mx-auto sm:w-50 md:w-full lg:w-100"
           />
           <div className="relative w-full felx justify-center items-center lg:max-w-60 pt-20">
             <h2 className="font-head text-center text-[clamp(4rem,8vw,7rem)] font-medium uppercase leading-[0.78] text-chalk lg:text-start">
@@ -107,7 +107,7 @@ export function MediaServices() {
                   ) : null}
                 </div>
                 <p className="font-mono text-[16px] max-sm:text-[16px] leading-[0.95] text-white/80 max-sm:text-2xl">
-                  <span className="mr-3 text-mustard">{String(index + 1).padStart(2, "0")}</span>
+                  {/* <span className="mr-3 text-mustard">{String(index + 1).padStart(2, "0")}</span> */}
                   {label}
                 </p>
               </motion.div>
@@ -117,7 +117,7 @@ export function MediaServices() {
         </motion.div>
 
         <motion.div
-          className="relative min-h-104 lg:min-h-full"
+          className="relative grid grid-cols-2 gap-4  max-lg:min-h-0 lg:min-h-full"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.35 }}
@@ -126,7 +126,7 @@ export function MediaServices() {
           {projectImages.map(({ src, alt }, index) => (
             <motion.div
               key={src}
-              className={`absolute w-[58%] borderbgimage bg-board p-1 shadow-[0_0_0_1px_rgb(243_239_226/0.2)] ${index === 0
+              className={`absolute h-auto w-[58%] borderbgimage bg-board p-1 shadow-[0_0_0_1px_rgb(243_239_226/0.2)] max-lg:relative max-lg:inset-auto max-lg:w-full max-lg:rotate-0 ${index === 0
                   ? "top-0 right-[9%] rotate-2"
                   : index === 1
                     ? "top-[24%] right-0 -rotate-3"
@@ -139,8 +139,8 @@ export function MediaServices() {
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.6 + index * 0.15, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="relative aspect-[1.35] overflow-hidden">
-                <Image src={src} alt={alt} fill sizes="(min-width: 1024px) 25vw, 55vw" className="object-cover" />
+              <div className="relative aspect-[1.35] overflow-hidden max-lg:aspect-[1.15]">
+                <Image src={src} alt={alt} fill sizes="(max-width: 1024px) 45vw, 30vw" className="border object-cover" />
               </div>
             </motion.div>
           ))}

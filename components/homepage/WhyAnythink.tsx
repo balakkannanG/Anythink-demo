@@ -13,7 +13,11 @@ import {
   Users,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { useRef, useState } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const reasons: readonly {
   number: string;
@@ -94,7 +98,7 @@ function ReasonCard({
         active ? "z-10 scale-125 border-2 border-mustard shadow-[0_0_24px_rgb(224_173_26/0.16)]" : "border-chalk/50 opacity-60 hover:border-mustard hover:opacity-100"
       }`}
     >
-      <span className="font-marker text-2xl text-mustard sm:text-3xl">{reason.number}</span>
+      {/* <span className="font-marker text-2xl text-mustard sm:text-3xl">{reason.number}</span> */}
       <Icon className="my-1 text-mustard" size={24} strokeWidth={1.2} aria-hidden="true" />
       <span className="font-head text-sm uppercase leading-[0.9] text-chalk sm:text-base">{reason.title}</span>
     </button>
@@ -103,30 +107,120 @@ function ReasonCard({
 
 export function WhyAnythink() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeIndexRef = useRef(0);
-  const wheelLockRef = useRef(false);
   const activeReason = reasons[activeIndex];
   const ActiveIcon = activeReason.icon;
+  const mobileStackRef = useRef<HTMLDivElement | null>(null);
+  const mobileCardRefs = useRef<Array<HTMLElement | null>>([]);
+  const desktopCarouselRef = useRef<HTMLDivElement | null>(null);
 
-  const handleCarouselWheel = (event: React.WheelEvent<HTMLDivElement>) => {
-    if (wheelLockRef.current || Math.abs(event.deltaY) < 10) return;
+  useEffect(() => {
+    if (!mobileStackRef.current || window.innerWidth >= 1024) return;
 
-    event.preventDefault();
-    wheelLockRef.current = true;
+    const cards = mobileCardRefs.current.filter((card): card is HTMLElement => Boolean(card));
+    if (cards.length === 0) return;
 
-    const direction = event.deltaY > 0 ? 1 : -1;
-    const nextIndex = (activeIndexRef.current + direction + reasons.length) % reasons.length;
-    activeIndexRef.current = nextIndex;
-    setActiveIndex(nextIndex);
+    const stackEl = mobileStackRef.current;
+    const ctx = gsap.context(() => {
+      gsap.set(cards, {
+        position: "absolute",
+        left: "50%",
+        top: "50%",
+        xPercent: -50,
+        yPercent: -50,
+        width: "min(82vw, 22rem)",
+        borderRadius: "1.5rem",
+        overflow: "hidden",
+        transformOrigin: "center center",
+      });
 
-    window.setTimeout(() => {
-      wheelLockRef.current = false;
-    }, 350);
-  };
+      cards.forEach((card, index) => {
+        gsap.set(card, {
+          y: index === 0 ? 0 : 180,
+          opacity: index === 0 ? 1 : 0,
+          scale: index === 0 ? 1 : 0.96,
+          rotate: 0,
+          zIndex: cards.length + index,
+        });
+      });
+
+      const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+
+      cards.slice(1).forEach((card, index) => {
+        const cardStart = index;
+        const previousCard = cards[index];
+
+        tl.to(
+          previousCard,
+          { y: -180, opacity: 0, scale: 0.96, duration: 1 },
+          cardStart
+        );
+        tl.to(
+          card,
+          { y: 0, opacity: 1, scale: 1, duration: 1 },
+          cardStart
+        );
+      });
+
+      const scrollTrigger = ScrollTrigger.create({
+        trigger: stackEl,
+        start: "top top",
+        end: () => "+=" + (cards.length - 1) * window.innerHeight * 0.9,
+        scrub: 0.8,
+        pin: true,
+        pinSpacing: true,
+        anticipatePin: 1,
+        animation: tl,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const progress = self.progress * (cards.length - 1);
+          const nextIndex = Math.min(cards.length - 1, Math.max(0, Math.round(progress)));
+          setActiveIndex(nextIndex);
+        },
+      });
+
+      return () => {
+        scrollTrigger.kill();
+      };
+    }, stackEl);
+
+    return () => {
+      ctx.revert();
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.vars.trigger === stackEl) {
+          trigger.kill();
+        }
+      });
+    };
+  }, []);
+
+  useEffect(() => {
+    const carousel = desktopCarouselRef.current;
+    if (!carousel) return;
+
+    let lastWheelTime = 0;
+
+    const handleWheel = (event: WheelEvent) => {
+      if (window.innerWidth < 1024 || Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
+
+      event.preventDefault();
+
+      const now = Date.now();
+      if (now - lastWheelTime < 450) return;
+      lastWheelTime = now;
+
+      setActiveIndex((currentIndex) => {
+        const direction = event.deltaY > 0 ? 1 : -1;
+        return (currentIndex + direction + reasons.length) % reasons.length;
+      });
+    };
+
+    carousel.addEventListener("wheel", handleWheel, { passive: false });
+    return () => carousel.removeEventListener("wheel", handleWheel);
+  }, []);
 
   return (
     <section className="overflow-hidden border-y border-line bg-black">
-      <div className="site-rail py-14 sm:py-24">
+      <div className="site-rail py-14 sm:py-24 ">
         <motion.header
           className="relative pt-6 text-left max-sm:text-center"
           initial={{ opacity: 0, y: 24 }}
@@ -171,24 +265,50 @@ export function WhyAnythink() {
         </motion.header>
 
         <div className="mx-auto mt-14 grid max-w-6xl gap-12 lg:grid-cols-[1fr_0.8fr] lg:items-center lg:gap-20">
-          {/*
-            Future mobile carousel section. Keep this block commented while the
-            shared carousel is used on mobile and desktop.
+          <div className="lg:hidden">
+            <div
+              ref={mobileStackRef}
+              className="relative h-152 overflow-hidden rounded-3xl bg-black px-3 py-5"
+              style={{ overscrollBehavior: "auto", touchAction: "pan-y" }}
+            >
+              {reasons.map((reason, index) => (
+                <article
+                  key={reason.number}
+                  ref={(el) => {
+                    mobileCardRefs.current[index] = el as HTMLElement | null;
+                  }}
+                  className="absolute left-1/2 top-1/2 w-[min(82vw,22rem)] rounded-3xl border border-chalk/40 bg-black p-4 shadow-[0_20px_40px_rgba(0,0,0,0.35)]"
+                >
+                  <div className="mb-4 flex items-center justify-between">
+                    {/* <span className="font-marker text-3xl text-mustard">{reason.number}</span> */}
+                    <div className="rounded-full border border-mustard/60 bg-mustard/10 p-2 text-mustard">
+                      <reason.icon size={18} strokeWidth={1.4} aria-hidden="true" />
+                    </div>
+                  </div>
 
-            <motion.div className="sm:hidden flex flex-col gap-6 overflow-hidden">
-              <div className="relative flex flex-col gap-4 overflow-y-scroll snap-y snap-mandatory scroll-smooth h-[26rem] rounded-lg border border-chalk/30 bg-board">
-                {reasons.map((reason) => (
-                  <article key={reason.number} className="flex-shrink-0 h-96 snap-start snap-always">
-                    Your future mobile card layout
-                  </article>
+                  <h3 className="font-head text-3xl uppercase leading-[0.9] text-chalk">{reason.title}</h3>
+                  <p className="mt-4 font-mono text-sm leading-relaxed text-white/80">{reason.description}</p>
+                </article>
+              ))}
+
+              <div className="absolute inset-x-0 bottom-4 z-20 flex justify-center gap-2">
+                {reasons.map((reason, index) => (
+                  <button
+                    key={reason.number}
+                    type="button"
+                    onClick={() => setActiveIndex(index)}
+                    aria-label={`Go to reason ${reason.number}`}
+                    aria-pressed={activeIndex === index}
+                    className={`h-2.5 rounded-full transition-all ${activeIndex === index ? "w-8 bg-mustard" : "w-2.5 bg-chalk-dim hover:bg-mustard"}`}
+                  />
                 ))}
               </div>
-            </motion.div>
-          */}
+            </div>
+          </div>
 
           {/* Carousel Details */}
           <motion.div
-            className="border-l-2 border-mustard pl-6 sm:pl-10"
+            className="hidden border-l-2 border-mustard pl-6 sm:pl-10 lg:block"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.25 }}
@@ -196,7 +316,7 @@ export function WhyAnythink() {
           >
             <div className="flex items-center gap-4 text-mustard">
               <ActiveIcon size={36} strokeWidth={1.2} aria-hidden="true" />
-              <span className="font-marker text-4xl">{activeReason.number}</span>
+              {/* <span className="font-marker text-4xl">{activeReason.number}</span> */}
             </div>
             <h3 className="mt-6 max-w-xl font-head text-[clamp(2.25rem,5vw,4.5rem)] uppercase leading-[0.85] text-chalk">
               {activeReason.title}
@@ -210,8 +330,8 @@ export function WhyAnythink() {
 
           {/* Shared Carousel */}
           <motion.div
-            onWheel={handleCarouselWheel}
-            className="relative flex min-h-120 flex-col items-center justify-center overflow-hidden border-y border-dashed border-line py-8"
+            ref={desktopCarouselRef}
+            className="relative hidden min-h-120 flex-col items-center justify-center overflow-hidden border-y border-dashed border-line py-8 lg:flex"
             style={{ overscrollBehavior: "contain" }}
             initial={{ opacity: 0, x: 18 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -228,10 +348,7 @@ export function WhyAnythink() {
                     key={`${reason.number}-${offset}`}
                     reason={reason}
                     active={offset === 0}
-                    onClick={() => {
-                      activeIndexRef.current = index;
-                      setActiveIndex(index);
-                    }}
+                    onClick={() => setActiveIndex(index)}
                   />
                 );
               })}
@@ -249,6 +366,7 @@ export function WhyAnythink() {
               ))}
             </div>
           </motion.div>
+
         </div>
 
         <motion.div

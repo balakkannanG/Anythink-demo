@@ -218,7 +218,7 @@ export function MediaServicesTwo() {
         </div>
 
         <motion.div
-          className="mt-12 borderbgimageyellow relative  rounded-4xl px-6 py-6 sm:mt-14 sm:px-10"
+          className="mt-12 borderbgimageyellow max-md:border-none! relative  rounded-4xl px-6 py-6 sm:mt-14 sm:px-10"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.35 }}
@@ -233,8 +233,8 @@ export function MediaServicesTwo() {
               <br className="hidden sm:block" />
               Growth marketing turns it into <span className="text-mustard">business.</span>
             </p>
-            <img src="/homepage/section 4/Layer 11.png" alt="target" width={70} height={50} />
-            <img src="/homepage/section 4/Layer 12.png" alt="target" width={70} height={50} />
+            <img src="/homepage/section 4/Layer 11.png" alt="target" width={70} height={50} className="hidden lg:block"/>
+            <img src="/homepage/section 4/Layer 12.png" alt="target" width={70} height={50} className="hidden lg:block"/>
           </div>
         </motion.div>
       </div>

@@ -27,7 +27,7 @@ export function HeroCover() {
   return (
     <section aria-labelledby="home-hero-title" className="chalkboard relative overflow-hidden border-b border-line">
 
-      <div className="absolute right-5 bottom-30 z-20 grid grid-cols-3 gap-3 opacity-80 sm:right-40 sm:bottom-8 md:right-10" aria-hidden="true">
+      <div className="absolute right-5 bottom-30 hidden  lg:grid z-20 grid grid-cols-3 gap-3 opacity-80 sm:right-40 sm:bottom-8 md:right-10" aria-hidden="true">
         
         {Array.from({ length: 18 }, (_, index) => (
             <motion.span
@@ -98,7 +98,7 @@ export function HeroCover() {
           </motion.div>
         </motion.div>
 
-        <div className="absolute left-0 top-3 grid grid-cols-3 gap-3 opacity-80" aria-hidden="true">
+        <div className="absolute left-0 top-3 grid grid-cols-3 gap-3 hidden lg:grid opacity-80" aria-hidden="true">
           {Array.from({ length: 18 }, (_, index) => (
             <motion.span
               key={index}

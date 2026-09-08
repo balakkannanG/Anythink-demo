@@ -98,8 +98,8 @@ export function FestivalExperience() {
                 ) : Icon ? (
                   <Icon size={42} strokeWidth={1.2} className="mx-auto text-chalk" aria-hidden="true" />
                 ) : null}
-                <h2 className="mt-5 h-10 font-mono text-[0.68rem] font-medium uppercase leading-tight tracking-[0.1em] text-mustard ">{title}</h2>
-                <p className="mx-auto mt-4 max-w-40 font-mono text-[14px] leading-tight text-white/80">{description}</p>
+                <h2 className="mt-5 h-10 font-mono text-md font-medium uppercase leading-tight tracking-[0.1em] text-mustard ">{title}</h2>
+                <p className="mx-auto mt-4 max-w-full font-mono text-[14px] leading-tight text-white/80">{description}</p>
               </motion.article>
             );
           })}

@@ -29,14 +29,14 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
         <motion.div
-          className="lg:pt-2"
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className=" flex flex-col lg:pt-2   "
         >
           <motion.p
-            className="inline-flex -rotate-1 borderbgimageyellow px-5 py-2 text-mustard text-xl uppercase leading-none font-head sm:text-2xl"
+            className="flex -rotate-1 borderbgimageyellow max-w-sm px-5 py-2 lg:w-80 md:w-50 text-mustard lg:text-3xl max-md:text-5xl uppercase leading-none font-head text-center max-md:mx-auto"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.2 }}
@@ -86,7 +86,7 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
               return (
                 <motion.li
                   key={label}
-                  className="grid grid-cols-[2.8rem_1fr] items-center gap-3 border-b border-dashed border-line py-3 text-chalk-dim"
+                  className="grid grid-cols-[2.8rem_1fr]  items-center gap-3 border-b border-dashed border-line py-3 text-chalk-dim"
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: false, amount: 0.2 }}
@@ -139,7 +139,7 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
           >
             <span className="font-chalk text-2xl text-mustard">made together</span>
             <motion.p
-              className="max-w-[16rem] text-right font-mono text-[0.6rem] uppercase leading-relaxed tracking-[0.14em] text-chalk-faint"
+              className="max-w-[16rem] text-right font-chalk text-[0.6rem] uppercase  tracking-[0.28em] text-white/80"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: false, amount: 0.3 }}
@@ -149,7 +149,7 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
             </motion.p>
           </motion.div>
           <motion.div
-            className="grid gap-x-4 gap-y-8 sm:grid-cols-2 sm:gap-5 lg:grid-cols-6 lg:gap-x-5 lg:gap-y-10 justify-center items-center "
+            className="grid gap-x-4 gap-y-8 max-md:grid-cols-2 sm:gap-5 lg:grid-cols-6 lg:gap-x-5 lg:gap-y-10 justify-center items-center  "
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: false, amount: 0.2 }}
@@ -158,7 +158,7 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
             {caseStudy.frames.map((frame, index) => (
               <motion.div
                 key={frame.label}
-                className={`sm:col-span-1 lg:col-span-2 ${index === 3 ? "lg:col-start-2" : ""} ${index === 4 ? "lg:col-start-4" : ""}`}
+                className={`sm:col-span-1 lg:col-span-2 ${index === 3 ? "lg:col-start-2" : ""} ${index === 4 ? "md:col-span-2 md:justify-self-center sm:justify-self-center" : ""} ${index === 4 ? "lg:col-start-4" : ""} `}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.2 }}

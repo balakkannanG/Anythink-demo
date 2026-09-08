@@ -6,7 +6,7 @@ import { ActionLink, ChalkHeading, SectionLabel, StoryMap } from "@/components/e
 export function AboutIntro() {
   return (
     <motion.section
-      className="site-rail grid gap-16 py-20 sm:py-28 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24"
+      className="site-rail grid gap-16 py-20 sm:py-28 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24 "
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false, amount: 0.15 }}
@@ -17,16 +17,17 @@ export function AboutIntro() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, amount: 0.2 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      
       >
         {/* <SectionLabel>anyTHINK / 01</SectionLabel> */}
-        <ChalkHeading as="h1" size="display" className="mt-10 max-w-sm max-sm:text-center text-[clamp(4rem,6vw,5rem)] uppercase leading-[0.88]  text-chalk">
+        <ChalkHeading as="h1" size="display" className="mt-10 lg:max-w-sm max-sm:text-center text-[clamp(4rem,6vw,5rem)] uppercase leading-[0.88]  text-chalk  max-md:w-md max-sm:w-full">
           Who
           <span className="block max-sm:inline text-mustard"> we<span className="inline-flex text-mustard text-center"><img src="/homepage/rightsidethreeline.png" alt="underline" className=" w-12 max-sm:hidden mt-2 max-md:w-14 " /></span> </span>
-           <span className="block text-mustard "><img src="/homepage/underline.png" alt="underline" className=" w-60  max-md:w-40 max-sm:w-60" /></span>
+           <span className="block text-mustard  "><img src="/homepage/underline.png" alt="underline" className=" w-60 max-md:mx-auto  max-md:w-40 max-sm:w-60" /></span>
           are
         </ChalkHeading>
         <motion.div
-          className="mt-10 border-l border-mustard pl-5"
+          className="mt-10 border-l border-mustard pl-5 max-md:mx-auto max-md:text-center"
           initial={{ opacity: 0, x: -12 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: false, amount: 0.3 }}
@@ -39,7 +40,7 @@ export function AboutIntro() {
           <p className="mt-4 font-chalk text-3xl text-chalk">Anythink is possible.</p>
         </motion.div>
         <motion.p
-          className="mt-10 max-w-lg text-sm leading-relaxed text-white/80 font-mono"
+          className="mt-10 max-w-lg text-sm leading-relaxed text-white/80 font-mono max-md:text-center"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
@@ -49,6 +50,7 @@ export function AboutIntro() {
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
+          className=" w-full flex max-md:justify-center"
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.4 }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}

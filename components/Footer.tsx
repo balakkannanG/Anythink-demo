@@ -29,21 +29,23 @@ export function Footer() {
   return (
     <footer className="border-t border-line bg-black relative overflow-hidden">
       {/* Background layer with opacity */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ 
+      <div
+        className="pointer-events-none absolute inset-0 z-0 opacity-10"
+        style={{
           backgroundImage: 'url(/homepage/anythinkmedialogobl.svg)',
-          opacity: 0.1
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'contain',
         }}
       />
       
       {/* Content layer */}
       <div className="site-rail relative z-10 grid gap-12 py-16 sm:grid-cols-3 sm:items-start sm:gap-8 sm:py-20">
-        <div className="space-y-12 pt-10 r">
+        <div className="space-y-12 pt-10 mx-auto max-sm:px-10">
           <div>
-            <div className="mb-4 flex items-center gap-2 font-sans text-sm font-semibold uppercase tracking-[0.12em] text-chalk-dim">
+            <div className="mb-4 flex items-center gap-2 font-sans text-sm font-semibold uppercase tracking-[0.12em] mx-auto text-chalk-dim">
               <Mail size={20} fill="currentColor" aria-hidden="true" />
-              <a className="font-mono text-xl font-bold text-mustard transition-opacity hover:opacity-75" href="mailto:rubina@anythink.media">
+              <a className="font-mono text-xl max-md:text-sm font-bold text-mustard transition-opacity hover:opacity-75" href="mailto:rubina@anythink.media">
               rubina@anythink.media
             </a>
             </div>
@@ -51,9 +53,9 @@ export function Footer() {
           </div>
 
           <div>
-            <div className="mb-4 flex items-center gap-2 font-sans text-sm font-semibold uppercase tracking-[0.12em] text-chalk-dim">
+            <div className="mb-4 flex items-center gap-2 font-sans text-sm font-semibold uppercase tracking-[0.12em] mx-auto text-chalk-dim">
               <Phone size={19} fill="currentColor" aria-hidden="true" />
-               <a className="font-mono text-xl font-bold text-mustard transition-opacity hover:opacity-75" href="tel:+919513708090">
+               <a className="font-mono text-xl max-md:text-sm font-bold text-mustard transition-opacity hover:opacity-75" href="tel:+919513708090">
               +91 9513708090
             </a>
             </div>
@@ -61,22 +63,23 @@ export function Footer() {
           </div>
 
           <div>
-            <div className="mb-4 flex items-center gap-2 font-sans text-sm font-semibold uppercase tracking-[0.12em] text-chalk-dim ">
+            <div className="mb-4 flex items-center gap-2 font-sans text-sm font-semibold uppercase tracking-[0.12em] mx-auto text-chalk-dim ">
               <House size={26} fill="currentColor" aria-hidden="true" />
-          <address className="max-w-84 not-italic font-mono text-xl font-bold leading-tight text-mustard ">
-              Ulsoor, 1st Floor, Bangalore,
-              <br />
-              Karnataka - 560 063
+          <address className="max-w-84 not-italic max-md:text-sm font-mono text-xl font-bold leading-tight text-mustard ">
+              Ulsoor,1st Floor,Bangalore-560063
             </address>
             </div>
             
           </div>
         </div>
 
-        <nav aria-label="Footer navigation" className="sm:pt-1  h-full ">
-          <ul className="grid gap-6 font-mono text-lg text-white/80 pt-8  justify-center">
+        <nav aria-label="Footer navigation" className="h-full sm:pt-1">
+          <ul className="grid gap-6 pt-8 font-mono text-lg text-white/80 max-md:grid-cols-2 max-md:justify-items-center">
             {footerLinks.map((link) => (
-              <li key={link.href}>
+              <li
+                key={link.href}
+                className={`${link.label === "Contact Us" ? "max-md:col-span-2 text-center " : "text-center max-md:text-left"}  w-full px-3`}
+              >
                 <Link className="transition-colors hover:text-mustard" href={link.href}>
                   {link.label}
                 </Link>

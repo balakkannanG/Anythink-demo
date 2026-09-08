@@ -33,19 +33,19 @@ export function ServiceRow({ service, compact = false }: ServiceRowProps) {
       viewport={{ once: false, amount: 0.2 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="grid items-center gap-5 lg:grid-cols-[70px_minmax(250px,1fr)_minmax(280px,1.3fr)_130px] lg:gap-8">
-        <span className="font-marker text-2xl max-xs:hidden max-sm:hidden max-md:hidden lg:block text-mustard " aria-hidden="true">
+      <div className="grid items-center gap-6 lg:grid-cols-[minmax(280px,1fr)_minmax(280px,1.3fr)_130px] lg:gap-8">
+        {/* <span className="font-marker text-2xl max-xs:hidden max-sm:hidden max-md:hidden  text-mustard " aria-hidden="true">
           {service.number}
-        </span>
-        <div className="flex items-center gap-4 max-sm:justify-center">
+        </span> */}
+        <div className="flex  items-center gap-10 max-sm:justify-center ">
           <span className="flex size-12 shrink-0 items-center justify-center  border-line text-mustard transition-colors group-hover:border-mustard">
-            <Image src={icon} alt="" width={50} height={34} aria-hidden="true" />
+            <Image src={icon} alt="" width={150} height={40} aria-hidden="true"  />
           </span>
           <h3 className="font-head text-[clamp(1.65rem,3vw,2.65rem)] uppercase leading-none text-chalk  ">
             {service.title}
           </h3>
         </div>
-        <p className="max-w-xl text-[16px] leading-relaxed text-white/80 font-mono max-sm:text-center">{service.description}</p>
+        <p className="max-w-xl text-[16px] font-mono leading-relaxed text-white/80 max-sm:text-center">{service.description}</p>
         <Link
           href={`/contact?service=${service.id}`}
           className="flex items-center justify-between gap-3 font-chalk text-xl leading-none text-mustard transition-colors hover:text-chalk max-sm:justify-center"

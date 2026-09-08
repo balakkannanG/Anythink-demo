@@ -26,7 +26,7 @@ export function NextMove() {
         <ChalkHeading size="section" className="mt-7 max-w-xl max-sm:text-center text-[clamp(4rem,6vw,5rem)]">
           Have a <span className="text-mustard">&ldquo;What If?&rdquo;</span>
         </ChalkHeading>
-        <p className="mt-8 max-w-md font-chalk text-2xl leading-tight text-chalk-dim">
+        <p className="mt-8 max-w-md font-chalk text-2xl leading-tight text-white/80 max-md:text-center">
           Tell us what you&apos;re thinking. We&apos;ll help you turn it into
           what&apos;s next.
         </p>
@@ -40,7 +40,7 @@ export function NextMove() {
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       >
         <motion.div
-          className="h-px w-full borderbgimagetop lg:w-72"
+          className="h-px w-full borderbgimagetop lg:w-72 "
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: false, amount: 0.25 }}
@@ -48,7 +48,7 @@ export function NextMove() {
           style={{ originX: 1 }}
           aria-hidden="true"
         />
-        <ActionLink href="/contact" variant="solid">
+        <ActionLink href="/contact" variant="solid"  className="max-md:mx-auto ">
           Start a conversation
         </ActionLink>
       </motion.div>

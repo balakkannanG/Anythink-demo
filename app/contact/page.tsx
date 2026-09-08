@@ -30,7 +30,7 @@ export default function ContactPage() {
             <SectionLabel>Start here / contact</SectionLabel>
           </motion.div> */}
           <motion.p
-            className="mt-12 font-mono text-[0.65rem] uppercase tracking-[0.24em] text-white/80"
+            className="mt-12 font-mono text-[0.65rem] uppercase tracking-[0.24em] text-white/80 max-md:text-center"
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.2 }}
@@ -38,13 +38,13 @@ export default function ContactPage() {
           >
             A thought, a brief, a possibility
           </motion.p>
-          <ChalkHeading as="h1" size="display" className="mt-5 max-w-md">
+          <ChalkHeading as="h1" size="display" className="mt-5 max-w-md max-md:text-center">
             Let&apos;s make
             <span className="block text-mustard">what&apos;s next. <span className="inline-flex text-mustard "><img src="/homepage/rightsidethreeline.png" alt="rightsidethreeline" className=" w-10 max-sm:w-10 max-sm:hidden mt-2" /></span></span>
-                 <span className="block text-mustard "><img src="/homepage/underline.png" alt="underline" className=" w-60 mb-2 mx-auto" /></span>
+                 <span className="block text-mustard "><img src="/homepage/underline.png" alt="underline" className=" w-60 mb-2 max-md:mx-auto lg:mx-0" /></span>
           </ChalkHeading>
           <motion.p
-            className="mt-10 max-w-md border-l border-mustard pl-5 text-base leading-relaxed text-white/80 font-mono"
+            className="mt-10 max-w-md border-l border-mustard pl-5 text-base leading-relaxed text-white/80 font-mono max-md:text-center"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.2 }}
@@ -53,13 +53,13 @@ export default function ContactPage() {
             Tell us what you are thinking about. We will bring the strategy, creativity and energy to help it move forward.
           </motion.p>
           <motion.p
-            className="mt-5 font-chalk text-2xl text-mustard"
+            className="mt-5 font-chalk text-2xl text-mustard max-md:text-center"
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
           >
-            Anythink is possible.<span className="block text-mustard "><img src="/homepage/underline.png" alt="underline" className=" w-40 mb-2 mx-auto lg:mx-0" /></span>
+            Anythink is possible.<span className="block text-mustard "><img src="/homepage/underline.png" alt="underline" className=" w-40 mb-2 max-md:mx-auto lg:mx-0" /></span>
           </motion.p>
           {/* <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -96,8 +96,8 @@ export default function ContactPage() {
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-mustard">Let&apos;s keep the idea moving</p>
-          <p className="max-w-2xl text-sm leading-relaxed text-white/80 font-mono">Media, content, podcasts, films, digital, social, events and activations — bring us the question and we&apos;ll find what&apos;s next.</p>
+          <p className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-mustard max-md:text-center">Let&apos;s keep the idea moving</p>
+          <p className="max-w-2xl text-sm leading-relaxed text-white/80 font-mono max-md:text-center">Media, content, podcasts, films, digital, social, events and activations — bring us the question and we&apos;ll find what&apos;s next.</p>
         </motion.div>
       </motion.section>
 
@@ -174,15 +174,16 @@ export default function ContactPage() {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
             <SectionLabel>Ready when you are</SectionLabel>
-            <p className="mt-4 font-chalk text-3xl text-chalk">Let&apos;s make what&apos;s next.</p>
+            <p className="mt-4 font-chalk text-3xl text-chalk max-md:text-center">Let&apos;s make what&apos;s next.</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 10 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="max-md:mx-auto"
           >
-            <ActionLink href="/" variant="plain">
+            <ActionLink href="/" variant="plain" className="max-md:text-center">
               Back to the beginning
             </ActionLink>
           </motion.div>

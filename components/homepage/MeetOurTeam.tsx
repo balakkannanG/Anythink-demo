@@ -79,8 +79,8 @@ export function MeetOurTeam() {
             viewport={{ once: false, amount: 0.25 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="mb-8 flex items-center gap-5">
-              <h3 className="font-chalk text-4xl uppercase leading-none text-mustard sm:text-5xl text-center">
+            <div className="mb-8 flex items-center max-md:justify-center gap-5">
+              <h3 className="font-chalk text-4xl uppercase leading-border text-mustard sm:text-5xl text-center">
                 Rubina Patel
               </h3>
               <span className="h-8 w-px bg-white/80" aria-hidden="true" />
@@ -150,6 +150,14 @@ export function MeetOurTeam() {
                 className="object-cover rounded-lg opacity-90"
               /> */}
               <span className="absolute right-4 bottom-4 font-marker text-4xl text-mustard" aria-hidden="true">✦</span>
+            </div>
+              <div className="mb-8 flex items-center gap-5 mt-10 max-md:block hidden ">
+              <h3 className="font-chalk text-4xl uppercase leading-none text-mustard sm:text-5xl text-center">
+                Rubina Patel
+              </h3>
+              <span className="h-8 w-px bg-white/80" aria-hidden="true" />
+               <img src="/homepage/section 5/Layer 26.png" alt="" className="w-auto h-full object-cover mx-auto" /> 
+              {/* <p className="font-mono text-sm font-semibold uppercase tracking-[0.12em] text-white/80">Founder</p> */}
             </div>
           </motion.div>
         </div>

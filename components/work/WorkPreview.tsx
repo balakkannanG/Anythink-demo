@@ -25,12 +25,15 @@ export function WorkPreview({ caseStudies }: WorkPreviewProps) {
             </h3> */}
             <img src={caseStudy.image} alt={caseStudy.title} className="mt-4 w-50 max-sm:mx-auto borderbgimage" />
             <p className="mt-4 font-mono text-[16px] leading-tight text-white/80 max-sm:text-center max-md:text-center">
-              {caseStudy.services.slice(0, 2).join(" · ")}
+              {caseStudy.services
+                .slice(0, 2)
+                .map((service) => (typeof service === "string" ? service : service.label))
+                .join(" · ")}
             </p>
           </div>
-          <span className="mt-8 flex items-center justify-between borderbgimagetop pt-4 font-mono text-[0.58rem] uppercase tracking-[0.15em] text-chalk-faint">
+          <span className="mt-8 flex items-center justify-between borderbgimagetop pt-4 font-chalk text-[0.70rem] uppercase tracking-[0.15em] text-white/80 transition-colors group-hover:text-mustard">
             Explore story
-            <span className="text-mustard transition-transform group-hover:translate-x-1" aria-hidden="true">
+            <span className="text-mustard text-[20px] transition-transform group-hover:translate-x-1" aria-hidden="true">
               ↗
             </span>
           </span>

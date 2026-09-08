@@ -50,7 +50,8 @@ export function StageExperience() {
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Image src="/homepage/anythinkmedialogobl.svg" alt="Anythink Media and Events" width={397} height={144} className="h-auto w-32 sm:w-40" />
+            <Image src="/homepage/anythinkmedialogobl.svg" alt="Anythink Media and Events" width={397} height={144} 
+            className="w-full sm:w-50 md:w-full lg:w-100" />
           </motion.div>
           <motion.div
             className="mt-10 lg:mt-14"
@@ -64,7 +65,7 @@ export function StageExperience() {
               <span className="block text-mustard"> <span className="inline-flex text-mustard "><img src="/homepage/leftsidethreeline.png" alt="leftsidethreeline" className=" w-10 max-sm:hidden mt-2" /></span>the stage.<span className="inline-flex text-mustard "><img src="/homepage/rightsidethreeline.png" alt="rightsidethreeline" className=" w-10 max-sm:w-10 max-sm:hidden mt-2" /></span></span>
             </h1>
             <div className="mt-6 h-px w-100 bg-chalk-dim borderbgimagetop max-sm:w-full" aria-hidden="true" />
-            <p className="mt-6 font-chalk text-2xl leading-tight text-chalk sm:text-3xl">Spaces that attract.<br />Experiences that stay. <span className="block text-mustard "><img src="/homepage/underline.png" alt="underline" className=" w-60  max-md:w-40 max-sm:w-60" /></span></p>
+            <p className="mt-6 font-chalk text-2xl leading-tight text-chalk sm:text-3xl max-md:text-center">Spaces that attract.<br />Experiences that stay. <span className="block text-mustard "><img src="/homepage/underline.png" alt="underline" className=" w-60  max-md:w-40 max-sm:w-60 max-md:mx-auto" /></span></p>
           </motion.div>
 
           <motion.div

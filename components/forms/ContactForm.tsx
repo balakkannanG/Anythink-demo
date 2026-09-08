@@ -173,7 +173,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="inline-flex min-h-12 items-center justify-center gap-4  borderbgimageyellow bg-mustard px-6 font-mono text-[0.65rem] font-medium uppercase tracking-[0.18em] text-ink transition-colors hover:bg-transparent hover:text-mustard disabled:cursor-wait disabled:opacity-60"
+          className="inline-flex min-h-12 items-center justify-center gap-4 border border-mustard/70 borderbgimageyellow px-6 font-mono text-[0.65rem] font-medium uppercase tracking-[0.18em] text-mustard transition-colors hover:bg-mustard hover:text-ink disabled:cursor-wait disabled:opacity-60"
         >
           {status === "submitting" ? "Sending…" : "Let’s talk"}
           <span aria-hidden="true">→</span>

@@ -21,10 +21,10 @@ export default function ServicesPage() {
 
       <section className="site-rail pb-20 sm:pb-28">
         <div className="flex flex-col justify-between gap-4 border-y border-line py-5 sm:flex-row sm:items-center">
-          <p className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-white max-sm:text-center">
+          <p className="font-mono text-md uppercase tracking-[0.2em] text-white max-sm:text-center">
             Our capabilities
           </p>
-          <p className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-mustard max-sm:text-center">
+          <p className="font-chalk text-sm uppercase tracking-[0.2em] text-mustard max-sm:text-center">
             Think beyond the brief · 05 ways
           </p>
         </div>

@@ -170,7 +170,7 @@ export function Testimonials() {
             </h2>
           </motion.div>
           <motion.p
-            className="max-w-xs font-chalk text-2xl leading-tight text-chalk-dim max-sm:text-center"
+            className="max-w-xs font-chalk text-2xl leading-right max-md:mx-auto text-white/80 max-md:text-center"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
@@ -204,8 +204,8 @@ export function Testimonials() {
                 </div>
                 <div className="min-w-0 pt-1">
                   <h3 className="font-head text-xl uppercase leading-none text-mustard">{testimonial.name}</h3>
-                  <p className="mt-2 text-xs italic leading-tight text-chalk-dim">{testimonial.role}</p>
-                  <p className="text-xs italic leading-tight text-chalk-dim">{testimonial.company}</p>
+                  <p className="mt-2 text-xs italic leading-tight text-white/80">{testimonial.role}</p>
+                  <p className="text-xs italic leading-tight text-white/80">{testimonial.company}</p>
                 </div>
               </div>
 
@@ -230,7 +230,7 @@ export function Testimonials() {
           viewport={{ once: false, amount: 0.4 }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="flex gap-2" aria-label="Select testimonial">
+          <div className=" gap-2 hidden lg:flex" aria-label="Select testimonial ">
             {testimonials.map((testimonial, index) => (
               <button
                 key={testimonial.name}
@@ -242,11 +242,11 @@ export function Testimonials() {
               />
             ))}
           </div>
-          <div className="flex gap-2">
-            <button type="button" className="flex size-11 items-center justify-center border border-line-strong text-chalk transition-colors hover:border-mustard hover:text-mustard" aria-label="Previous testimonial" onClick={() => moveTo(activeIndex - 1)}>
+          <div className="flex gap-5 float-right  w-full justify-center lg:justify-end">
+            <button type="button" className="flex borderbgimage size-11 items-center justify-center border border-line-strong text-chalk transition-colors hover:border-mustard hover:text-mustard" aria-label="Previous testimonial" onClick={() => moveTo(activeIndex - 1)}>
               <ChevronLeft size={18} aria-hidden="true" />
             </button>
-            <button type="button" className="flex size-11 items-center justify-center border border-line-strong text-chalk transition-colors hover:border-mustard hover:text-mustard" aria-label="Next testimonial" onClick={() => moveTo(activeIndex + 1)}>
+            <button type="button" className="flex size-11 borderbgimage items-center justify-center border border-line-strong text-chalk transition-colors hover:border-mustard hover:text-mustard" aria-label="Next testimonial" onClick={() => moveTo(activeIndex + 1)}>
               <ChevronRight size={18} aria-hidden="true" />
             </button>
           </div>

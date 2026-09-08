@@ -15,8 +15,8 @@ export function WhatWeDo() {
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
-              <span className="absolute right-10 top-5 inline-flex max-md:hidden">
-                <img src="/homepage/section 7/Rectangle 9.png" alt="underline" className="w-100 max-sm:hidden max-md:w-8" />
+              <span className="absolute right-10 top-5 inline-flex max-md:hidden ">
+                <img src="/homepage/section 7/Rectangle 9.png" alt="underline" className="w-100 mx-auto max-sm:hidden max-md:w-8" />
               </span>
             </motion.div>
       <div className="grid gap-8 lg:grid-cols-[0.7fr_1fr] lg:items-end">
@@ -29,12 +29,12 @@ export function WhatWeDo() {
         >
           {/* <SectionLabel>02 / what we do</SectionLabel> */}
           <ChalkHeading size="section" className="mt-7 max-w-xl md:text-center lg:text-start max-sm:text-center text-[clamp(4rem,6vw,5rem)]">
-            Make the idea <span className="text-mustard">matter.</span> <span className="block text-mustard "><img src="/homepage/underline.png" alt="underline" className=" w-60  max-md:w-40 max-sm:w-60" /></span>
+            Make the idea <span className="text-mustard">matter.</span> <span className="block text-mustard "><img src="/homepage/underline.png" alt="underline" className=" w-60 mx-auto lg:mx-0  max-md:w-40 max-sm:w-60" /></span>
           </ChalkHeading>
         </motion.div>
 
         <motion.p
-          className="justify-self-end max-w-sm font-chalk text-2xl leading-tight text-chalk-dim max-sm:text-center"
+          className="justify-self-end max-w-sm font-chalk text-2xl leading-tight text-white/80 max-sm:text-center"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}

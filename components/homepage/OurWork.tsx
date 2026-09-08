@@ -22,7 +22,7 @@ export function OurWork() {
               Ideas that <span className="text-mustard">got some where.</span><span className="inline-flex text-mustard "><img src="/homepage/rightsidethreeline.png" alt="underline" className=" w-16 max-sm:hidden mt-2 max-md:w-14 " /></span>
             </ChalkHeading>
           </div>
-          <ActionLink href="/work" variant="plain">
+          <ActionLink href="/work" variant="plain" className="max-sm:mx-auto borderbgimageyellow">
             View all stories
           </ActionLink>
         </motion.div>

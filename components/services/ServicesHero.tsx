@@ -82,7 +82,7 @@ export function ServicesHero() {
             width={397}
             height={144}
             priority
-            className="h-auto w-36 sm:w-44"
+            className="w-full sm:w-50 md:w-full lg:w-100"
           />
         </motion.div>
         <div className="relative ">
@@ -162,7 +162,7 @@ export function ServicesHero() {
             >
               <div className="flex h-20 w-full items-center justify-center ">
                 {typeof icon === "string" ? (
-                  <Image src={icon} alt="" width={80} height={48} className="h-12 w-20 object-contain" aria-hidden="true" />
+                  <Image src={icon} alt="" width={80} height={48} className="h-auto w-26 lg:w-24 object-cover" aria-hidden="true" />
                 ) : Icon ? (
                   <Icon
                     size={48}
@@ -172,14 +172,14 @@ export function ServicesHero() {
                   />
                 ) : null}
               </div>
-              <h2 className="mt-6 flex h-8 max-w-32 items-start justify-center font-mono text-[0.68rem] font-medium uppercase leading-tight tracking-[0.12em] text-mustard">
+              <h2 className="mt-6 flex h-10 max-w-full items-start   justify-center font-mono text-md font-medium uppercase leading-tight tracking-[0.12em] text-mustard">
                 {title}
               </h2>
               <div
                 className="my-5 h-px w-16 borderbgimagetop"
                 aria-hidden="true"
               />
-              <p className="max-w-36 font-mono text-[12px] leading-tight text-white/80">
+              <p className="max-w-full font-mono text-[12px] leading-tight text-white/80 ">
                 {description}
               </p>
             </motion.article>
