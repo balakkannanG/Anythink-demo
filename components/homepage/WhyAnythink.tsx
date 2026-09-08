@@ -264,11 +264,11 @@ export function WhyAnythink() {
           </motion.p>
         </motion.header>
 
-        <div className="mx-auto mt-14 grid max-w-6xl gap-12 lg:grid-cols-[1fr_0.8fr] lg:items-center lg:gap-20">
-          <div className="lg:hidden">
+        <div className="mx-auto mt-14 grid max-w-6xl gap-12 lg:grid-cols-[1fr_0.8fr] lg:items-center lg:gap-20 ">
+          <div className="h-full  lg:hidden">
             <div
               ref={mobileStackRef}
-              className="relative h-152 overflow-hidden rounded-3xl bg-black px-3 py-5"
+              className="relative h-svh min-h-128 overflow-hidden rounded-3xl bg-black px-3 py-5"
               style={{ overscrollBehavior: "auto", touchAction: "pan-y" }}
             >
               {reasons.map((reason, index) => (
